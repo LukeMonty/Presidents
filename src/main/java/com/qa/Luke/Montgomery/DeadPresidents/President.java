@@ -3,13 +3,15 @@ package com.qa.Luke.Montgomery.DeadPresidents;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class President {
-	Calendar dateOfBirth;
-	Calendar dateOfDeath;
+	Date dateOfBirth;
+
 	String name;
 	String placeOfBirth;
-	String locationOfDeath;
+
 	String[] split;
 
 	/*
@@ -23,43 +25,33 @@ public class President {
 	 * placeOfBirth;
 	 * 
 	 * }
-	 * 
-	 * public void mPresident(String[] split) {
+	 */
+
+	/*
+	 * public President(String[] split) {
 	 * 
 	 * this.split[0] = name; this.split[1] = dateOfBirth; this.split[2] =
 	 * placeOfBirth; }
 	 */
 
 	public President(String[] split) {
-		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy");
-
-		this.name = split[0];
-
-		try {
-
-			
-				this.dateOfBirth.setTime(sdf.parse(split[1]));
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy", Locale.US);
 		
-
-		} catch (ParseException e) {
-
-			e.printStackTrace();
-		}
-
-		this.placeOfBirth = split[2];
+		this.name = split[0];
 		try {
-			this.dateOfDeath.setTime(sdf.parse(split[3]));
+			this.dateOfBirth = sdf.parse(split[1]);
 		} catch (ParseException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.locationOfDeath = split[4];
+		sdf.applyPattern("MM.dd.yyyy");
+		this.placeOfBirth = split[2];
 
 	}
 
 	public String toString() {
 
-		return this.locationOfDeath;
+		return this.name + " is ALIVE " + this.dateOfBirth + " " + this.dateOfBirth;
 
 	}
 

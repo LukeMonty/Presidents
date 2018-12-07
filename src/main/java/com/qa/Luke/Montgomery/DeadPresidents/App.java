@@ -21,13 +21,13 @@ public class App {
 			list = t.fileReader(file);
 			
 			for (String string : list) {
-				System.out.println(string);
+				//System.out.println(string);
 			}
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
-		
+		list.remove(0);
 		s.sortList(list);
 		
 	}
